@@ -41,7 +41,28 @@ if (g_ring_head != g_ring_tail) {			// head is chasing the tail
 
 
 
+l_report[1] = (0xFF & count);
+		l_report[2] = (0xFF & (count >> 8));
 
+		*((uint32_t *)((&l_report[3]))) = HAL_GetTick();
+		*((uint32_t *)((&l_report[7]))) = l_spin++;
+
+		while (1) {
+
+			switch (USBD_CUSTOM_HID_SendReport (&hUsbDeviceHS, l_report, 64))
+			{
+				case USBD_OK: // code to be executed if n = 1;
+					break;
+				case CUSTOM_HID_BUSY:
+			  //case USBD_BUSY:         same value as CUSTOM_HID_BUSY
+					//HAL_Delay(1);
+					continue ;
+					break;
+				default:
+					continue ;
+			}
+			break;
+		}
 
 
 

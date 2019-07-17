@@ -1,0 +1,14 @@
+C:\SAFE\Beefcake\GUI_HID_C#\bin\Release\BulkLoop.exe.manifest
+C:\SAFE\Beefcake\GUI_HID_C#\bin\Release\BulkLoop.application
+C:\SAFE\Beefcake\GUI_HID_C#\bin\Release\BulkLoop.exe
+C:\SAFE\Beefcake\GUI_HID_C#\bin\Release\BulkLoop.pdb
+C:\SAFE\Beefcake\GUI_HID_C#\bin\Release\CyUSB.dll
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.Form1.resources
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.Properties.Resources.resources
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\HID_C_Sharp_GUI.csproj.GenerateResource.cache
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\HID_C_Sharp_GUI.csproj.CoreCompileInputs.cache
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.exe.manifest
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.application
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\HID_C_Sharp_GUI.csproj.CopyComplete
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.exe
+C:\SAFE\Beefcake\GUI_HID_C#\obj\Release\BulkLoop.pdb

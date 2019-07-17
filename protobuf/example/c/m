@@ -1,0 +1,14 @@
+clear
+gcc main.c addressbook.pb-c.c  -o my_program -pthread -I/usr/local/include -pthread -L/usr/local/lib -lprotoc -lprotobuf -lpthread -lprotobuf-c
+if [ $? -eq 0 ] 
+then
+  echo
+  echo "GENIUS!"
+  ../cpp/my_program ../cpp/addressbook.data > /tmp/tp &
+  ./my_program 1 2 < /tmp/tp
+  echo "DONE"
+else
+  echo
+  echo "ERROR!"
+fi
+echo

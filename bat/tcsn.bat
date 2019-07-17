@@ -1,0 +1,1 @@
+cd C:\SAFE\MinIMU_SN\CV1FWToolchain

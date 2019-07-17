@@ -1,0 +1,12 @@
+clear
+gcc m.c
+if [ $? -eq 0 ] 
+then
+  echo
+  echo "GENIUS!"
+  a.exe
+else
+  echo
+  echo "ERROR!"
+fi
+echo

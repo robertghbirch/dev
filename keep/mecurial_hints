@@ -1,0 +1,1034 @@
+ 1016  d d
+ 1017  m
+ 1018  groups
+ 1019  groups | grep svn
+ 1020  sudo groupadd svnuser
+ 1021  d
+ 1022  groups | grep svn
+ 1023  sudo touch /etc/fbitwhoami
+ 1024  reboot
+ 1025  d
+ 1026  C\
+ 1027  C
+ 1028  ptpd man
+ 1029  man ptpd
+ 1030  ptpd
+ 1031  d
+ 1032  d c
+ 1033  d .
+ 1034  d
+ 1035  d .
+ 1036  cd /SAFE/
+ 1037  d
+ 1038  d b
+ 1039  d f
+ 1040  ./python
+ 1041  d
+ 1042  choco
+ 1043  chocolatly
+ 1044  Chocolatey
+ 1045  top
+ 1046  d
+ 1047  pushd .
+ 1048  d
+ 1049  d j
+ 1050  m
+ 1051  pkill guvcview
+ 1052  ps -fu robertbirch
+ 1053  ps -fu robertbirch | grep uvc
+ 1054  kill -9 20997
+ 1055  m
+ 1056  vi m
+ 1057  m
+ 1058  C
+ 1059  D
+ 1060  d
+ 1061  d e
+ 1062  C
+ 1063  ./XMLupdater.out 
+ 1064  d
+ 1065  d b
+ 1066  m
+ 1067  vi m
+ 1068  m
+ 1069  tty
+ 1070  tmux
+ 1071  tmux
+ 1072  tty
+ 1073  lsusb -D /dev/bus/usb/014/002 
+ 1074  d
+ 1075  cd
+ 1076  cd Downloads/
+ 1077  d
+ 1078  python OVRHIDAPI.py 
+ 1079  vi OVRHIDAPI.py 
+ 1080  python2.7 OVRHIDAPI.py 
+ 1081  vi OVRHIDAPI.py 
+ 1082  python2.7 OVRHIDAPI.py 
+ 1083  python2.7 BuildInfo.py 
+ 1084  python2.7 OVRHIDAPI.py 
+ 1085  python2.7 BuildInfo.py 
+ 1086  grep Common *
+ 1087  vi BuildInfo.py 
+ 1088  python2.7 BuildInfo.py 
+ 1089  vi BuildInfo.py 
+ 1090  grep Common *
+ 1091  vi CV1HID.py
+ 1092  python2.7 BuildInfo.py 
+ 1093  d
+ 1094  python2.7 BuildInfo.py 
+ 1095  d
+ 1096  ;
+ 1097  l
+ 1098  python OVRHIDAPI.py
+ 1099  python2.7 OVRHIDAPI.py
+ 1100  vi OVRHIDAPI.py
+ 1101  python2.7 OVRHIDAPI.py
+ 1102  l
+ 1103  vi BuildInfo.py 
+ 1104  python2.7 BuildInfo.py 
+ 1105  vi BuildInfo.py 
+ 1106  grep Target *.py
+ 1107  vi CV1HID.py
+ 1108  python2.7 CV1HID.py
+ 1109  python2.7 CV1HID.py -v
+ 1110  python2.7 CV1HID.py
+ 1111  vi CV1HID.py
+ 1112  d
+ 1113  l
+ 1114  vi OVRHIDAPI.py
+ 1115  python2.7 OVRHIDAPI.py
+ 1116  python2.7 BuildInfo.py 
+ 1117  vi OVRHIDAPI.py
+ 1118  d
+ 1119  sudo find / -name activate*
+ 1120  which python
+ 1121  l
+ 1122  cat python 
+ 1123  cat n.py 
+ 1124  rm n.py 
+ 1125  rm python 
+ 1126  d
+ 1127  l
+ 1128  python OVRHIDAPI.py
+ 1129  python
+ 1130  sudo apt-get install python-pip
+ 1131  pip freeze
+ 1132  python
+ 1133  python pip uninstall usb
+ 1134  pip uninstall usb
+ 1135  which python
+ 1136  ls -ln /usr/bin/python
+ 1137  python
+ 1138  d
+ 1139  l
+ 1140  python OVRHIDAPI.py
+ 1141  which python
+ 1142  ls -ln /usr/bin/python
+ 1143  which python2.7
+ 1144  cd /usr/bin/
+ 1145  d
+ 1146  cd
+ 1147  d
+ 1148  cd
+ 1149  d
+ 1150  pwd
+ 1151  cd /SAFE/
+ 1152  d
+ 1153  d .
+ 1154  d z
+ 1155  l
+ 1156  mcd t
+ 1157  sudo find / -name activate*
+ 1158  python
+ 1159  d
+ 1160  cp ~/Downloads/Python-2.7.12.tgz .
+ 1161  tar -xvf Python-2.7.12.tgz 
+ 1162  d
+ 1163  d a
+ 1164  install-sh
+ 1165  make
+ 1166  cat README 
+ 1167  cat README  | less
+ 1168  ./configure 
+ 1169  make
+ 1170  d
+ 1171  find . -name python
+ 1172  ./python 
+ 1173  d
+ 1174  cp ~/Downloads/OVRHIDAPI.py .
+ 1175  ./python OVRHIDAPI.py 
+ 1176  cp ~/Downloads/CV1HID.py .
+ 1177  cp ~/Downloads/BuildInfo.py .
+ 1178  ./python BuildInfo.py 
+ 1179  which python
+ 1180  pip freeze
+ 1181  d
+ 1182  find . -name activate
+ 1183  d
+ 1184  vi ./BuildInfo.py 
+ 1185  ./python BuildInfo.py 
+ 1186  vi ./BuildInfo.py 
+ 1187  ./python BuildInfo.py 
+ 1188  f
+ 1189  d
+ 1190  ./python 
+ 1191  ./python setup.py uninstall usb
+ 1192  ./python setup.py install --record
+ 1193  ./python setup.py install
+ 1194  ./python setup.py install --record 1.txt
+ 1195  pip uninstall usb
+ 1196  pip install --upgrade pip
+ 1197  pip uninstall usb
+ 1198  pip uninstall pyusb
+ 1199  d
+ 1200  ./python BuildInfo.py 
+ 1201  vi BuildInfo.py 
+ 1202  py
+ 1203  python
+ 1204  pip uninstall pyhid
+ 1205  pip uninstall hid
+ 1206  d
+ 1207  python ./BuildInfo.py 
+ 1208  cat BuildInfo.py | grep hid
+ 1209  cat *.py | grep hid
+ 1210  pip install hid
+ 1211  sudo pip install hid
+ 1212  ./python BuildInfo.py 
+ 1213  d
+ 1214  ./python BuildInfo.py 
+ 1215  pip install hid
+ 1216  ./python BuildInfo.py 
+ 1217  pip install hid
+ 1218  pip uninstall hid
+ 1219  sudo pip uninstall hid
+ 1220  pip install --upgrade pip
+ 1221  python
+ 1222  d
+ 1223  pip install hid
+ 1224  sudo pip install hid
+ 1225  d
+ 1226  ./python BuildInfo.py 
+ 1227  sudo pip2.7 install hid
+ 1228  ./python BuildInfo.py 
+ 1229  sudo pip2.7 install hid
+ 1230  sudo pip2.7 --upgrad install hid
+ 1231  sudo pip2.7 --upgrade hid
+ 1232  sudo pip2.7 install --upgrade pip
+ 1233  sudo pip2.7 install --upgrade pip2.7
+ 1234  sudo pip2.7 install hid
+ 1235  ./python BuildInfo.py 
+ 1236  python BuildInfo.py 
+ 1237  d
+ 1238  cd /research-surreal/
+ 1239  d .
+ 1240  cd
+ 1241  bash
+ 1242  ime=1000,sn=555078400]
+ 1243  ./VideoViewer --frame-properties -i eyes:[size=636x400,ExternalTrigger=0,ExposureTime=1000,sn=55]
+ 1244  ./VideoViewer --frame-properties -i eyes:[size=636x400,ExternalTrigger=0,ExposureTime=1000,sn=555078400]
+ 1245  d
+ 1246  d
+ 1247  cd /research-surreal/
+ 1248  d
+ 1249  cd ..
+ 1250  d
+ 1251  python
+ 1252  d
+ 1253  cat /proc/version
+ 1254  d
+ 1255  d F
+ 1256  ./guvcview
+ 1257  vlc
+ 1258  ./guvcview
+ 1259  d
+ 1260  d g
+ 1261  ./guvcview
+ 1262  ./VideoViewer 
+ 1263  history | grep Vid
+ 1264  d
+ 1265  sudo find / -name Build*
+ 1266  cd /tmp/t/Python-2.7.12/
+ 1267  python BuildInfo.py 
+ 1268  sudo apt install python-hid
+ 1269  python BuildInfo.py 
+ 1270  sudo apt install python-hid
+ 1271  sudo apt-get install --reinstall python2.7
+ 1272  sudo apt install python-hid
+ 1273  suo aptitude reinstall python2.7
+ 1274  sudo apt install python-hid
+ 1275  python BuildInfo.py 
+ 1276  sudo apt install python-hid
+ 1277  python2.7 BuildInfo.py 
+ 1278  which python
+ 1279  ./python BuildInfo.py 
+ 1280  cd ..
+ 1281  which python
+ 1282  cd Python-2.7.12/
+ 1283  d
+ 1284  /usr/bin/python
+ 1285  /usr/bin/python BuildInfo.py 
+ 1286  cd ..
+ 1287  history 
+ 1288  ~2015
+ 1289  2015
+ 1290  sudo find / -name Build*
+ 1291  cd ~/Downloads/
+ 1292  d
+ 1293  l BuildInfo.py 
+ 1294  python BuildInfo.py 
+ 1295  d
+ 1296  cd
+ 1297  d
+ 1298  d w
+ 1299  vi .my_top_cmds
+ 1300  vi .my_top_cmds_25fps 
+ 1301  vi .my_top_cmds_bu 
+ 1302  cat .my_top_cmds_bu 
+ 1303  cat .my_top_cmds_25fps 
+ 1304  cat .my_top_cmds
+ 1305  history | grep Vi
+ 1306  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=169432321]//
+ 1307  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=169432321]//]//
+ 1308  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=555340544]//
+ 1309  ./VideoViewer --frame-properties -i eyes:[size=636x400,ExposureTime=1000,sn=555340544]//
+ 1310  ./VideoViewer --frame-properties -i eyes:[size=636x400,ExposureTime=1000,sn=5553404]//
+ 1311  ./VideoViewer --frame-properties -i eyes:[size=636x400,ExposureTime=1000,sn=556126976]//
+ 1312  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=169432]//
+ 1313  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=538166720]//
+ 1314  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=538366720]//
+ 1315  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=153961217]//
+ 1316  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=169432]//
+ 1317  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=153961217]//
+ 1318  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=15396]//
+ 1319  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=153961217]//
+ 1320  ./VideoViewer --frame-properties -i eyes:[size=1272x800,ExposureTime=1000,sn=170869505]//
+ 1321  ./VideoViewer --version
+ 1322  C
+ 1323  d
+ 1324  d J
+ 1325  dJ
+ 1326  d j
+ 1327  C
+ 1328  C c
+ 1329  history | grep Vid
+ 1330  C c
+ 1331  d
+ 1332  d d
+ 1333  ./guvcview
+ 1334  pushd .
+ 1335  d
+ 1336  d a
+ 1337  d d
+ 1338  m
+ 1339  groups
+ 1340  groups | grep svn
+ 1341  sudo groupadd svnuser
+ 1342  d
+ 1343  groups | grep svn
+ 1344  sudo touch /etc/fbitwhoami
+ 1345  reboot
+ 1346  d
+ 1347  C\
+ 1348  C
+ 1349  ptpd man
+ 1350  man ptpd
+ 1351  ptpd
+ 1352  d
+ 1353  d c
+ 1354  d .
+ 1355  d
+ 1356  d .
+ 1357  cd /SAFE/
+ 1358  d
+ 1359  d b
+ 1360  d f
+ 1361  ./python
+ 1362  d
+ 1363  choco
+ 1364  chocolatly
+ 1365  Chocolatey
+ 1366  top
+ 1367  d
+ 1368  pushd .
+ 1369  d
+ 1370  d j
+ 1371  m
+ 1372  pkill guvcview
+ 1373  ps -fu robertbirch
+ 1374  ps -fu robertbirch | grep uvc
+ 1375  kill -9 20997
+ 1376  m
+ 1377  vi m
+ 1378  m
+ 1379  C
+ 1380  D
+ 1381  d
+ 1382  d e
+ 1383  C
+ 1384  ./XMLupdater.out 
+ 1385  d
+ 1386  d b
+ 1387  m
+ 1388  vi m
+ 1389  m
+ 1390  tty
+ 1391  tmux
+ 1392  tmux
+ 1393  lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done
+ 1394  echo 'lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done'
+ 1395  echo 'lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done' >> /tmp/1
+ 1396  gedit /tmp/1
+ 1397  echo 'lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done' >> /tmp/1
+ 1398  lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done
+ 1399  gedit /tmp/1
+ 1400  lsusb > /tmp/c1 ; while [ true ];  do lsusb > /tmp/c2 ; diff /tmp/c1 /tmp/c2 ; ls /dev/video* 2>/dev/null ; date ; echo -n CAMS: ; ls /dev/video* 2>/dev/null | wc -w ; done
+ 1401  d
+ 1402  d /SAFE/
+ 1403  d
+ 1404  cd /SAFE/
+ 1405  d
+ 1406  d a
+ 1407  d .
+ 1408  d b
+ 1409  d a
+ 1410  d g
+ 1411  d .
+ 1412  d e
+ 1413  d c
+ 1414  python2.7 IMU.py 
+ 1415  python2.7 BuildInfo.py 
+ 1416  cp BuildInfo.py ~/Downloads/
+ 1417  d .
+ 1418  cp CV1HID.py ~/Downloads/
+ 1419  d .
+ 1420  d
+ 1421  d .
+ 1422  cd Common/
+ 1423  d
+ 1424  d c
+ 1425  cp OVRHIDAPI.py ~/Downloads/
+ 1426  python OVRHIDAPI.py
+ 1427  cd
+ 1428  cd Downloads/
+ 1429  d
+ 1430  which python
+ 1431  python
+ 1432  l
+ 1433  python OVRHIDAPI.py
+ 1434  python BuildInfo.py 
+ 1435  cd /
+ 1436  d
+ 1437  which python2.7
+ 1438  rm /usr/bin/python2.7
+ 1439  d
+ 1440  cd /
+ 1441  d
+ 1442  d u
+ 1443  d a
+ 1444  d e
+ 1445  d .
+ 1446  d b
+ 1447  d f
+ 1448  cat README.txt 
+ 1449  cat README.txt  | less
+ 1450  d
+ 1451  ./python.exe
+ 1452  d
+ 1453  which python
+ 1454  d
+ 1455  d .
+ 1456  d f
+ 1457  d h
+ 1458  d .
+ 1459  d b
+ 1460  C
+ 1461  N
+ 1462  cd
+ 1463  cd /
+ 1464  d
+ 1465  d u
+ 1466  git clone --recursive git@ghe.oculus.com:OculusResearch/Martian
+ 1467  git clone --recursive git@ghe.oculus.com:robertbirch/Harde
+ 1468  d
+ 1469  git clone --recursive git@ghe.oculus.com:OculusResearch/TimingBoard
+ 1470  vi ~/.ssh/config 
+ 1471  vi ~/.ssh/id_rsa.pub 
+ 1472  gedit ~/.ssh/id_rsa.pub 
+ 1473  git clone --recursive git@ghe.oculus.com:OculusResearch/TimingBoard
+ 1474  d
+ 1475  cd
+ 1476  pwd
+ 1477  ssh-keygen
+ 1478  cat ~/.ssh/id_rsa.pub 
+ 1479  cat ~/.ssh/config 
+ 1480  pwd
+ 1481  d
+ 1482  cd /tmp
+ 1483  mcd a
+ 1484  git clone --recursive git@ghe.oculus.com:OculusResearch/research-surreal.git
+ 1485  cat ~/.ssh/id_rsa.pub 
+ 1486  git clone --recursive git@ghe.oculus.com:OculusResearch/research-surreal.git
+ 1487  cat ~/.ssh/config 
+ 1488  cat ~/.ssh/id_rsa
+ 1489  cat ~/.ssh/config 
+ 1490  l ~/.ssh/id_rsa
+ 1491  d
+ 1492  cd ~
+ 1493  cd .ssh/
+ 1494  d
+ 1495  cat known_hosts 
+ 1496  cat config 
+ 1497  help awk
+ 1498  man awk
+ 1499  d
+ 1500  cd
+ 1501  d
+ 1502  cd /
+ 1503  d
+ 1504  d C
+ 1505  v d
+ 1506  sudo apt install fb-mercurial-omnibus fb-jellyfish
+ 1507  sudo touch /etc/fbitwhoami
+ 1508  kinit
+ 1509  export CLONECONFIG="--config extensions.lfs="
+ 1510  fbclone ovrsource --sparse SparseProfiles/OculusResearchAR.sparse
+ 1511  cd ~/ovrsource/Research/ar/research-surreal
+ 1512  cd ~/ovrsource
+ 1513  ovrsource
+ 1514  cd /mnt/orrl/
+ 1515  l
+ 1516  d
+ 1517  nfs-common
+ 1518  sudo apt-get install nfs-common
+ 1519  mkdir -p /mnt/orrl
+ 1520  sudo mount -a
+ 1521  cd /mnt/orrl/
+ 1522  l
+ 1523  cd
+ 1524  fbclone ovrsource --sparse SparseProfiles/OculusResearchAR.sparse
+ 1525  groups
+ 1526  groups | grep svn
+ 1527  sudo groupadd svnuser
+ 1528  groups | grep svn
+ 1529  groups
+ 1530  groups > 1
+ 1531  vi 1
+ 1532  sudo usermod -g svnuser robertbirch
+ 1533  groups
+ 1534  groups | grep svn
+ 1535  groups 
+ 1536  id
+ 1537  id | grep svn
+ 1538  reboot
+ 1539  tty
+ 1540  d
+ 1541  groups
+ 1542  groups | grep snv
+ 1543  sudo groupadd svnuser
+ 1544  sudo usermod -g svnuser robertbirch
+ 1545  sudo usermod svnuser robertbirch
+ 1546  sudo usermod -a -G svnuser robertbirch
+ 1547  groups | grep snv
+ 1548  sudo usermod -g svnuser robertbirch
+ 1549  groups
+ 1550  groups | grep snv
+ 1551  groups
+ 1552  sudo groupadd svnuser
+ 1553  group
+ 1554  sudo groupadd svnuser
+ 1555  cat /etc/fbitwhoami
+ 1556  l /etc/fbitwhoami 
+ 1557  sudo cat /etc/fbitwhoami 
+ 1558  sudo apt install fb-mercurial-omnibus fb-jellyfish
+ 1559  sudo touch /etc/fbitwhoami
+ 1560  kinit
+ 1561  export CLONECONFIG="--config extensions.lfs="
+ 1562  fbclone ovrsource --sparse SparseProfiles/OculusResearchAR.sparse
+ 1563  fbclone ovrsource
+ 1564  cat /etc/fbwhoami
+ 1565  l /mnt/orrl/
+ 1566  mount -a
+ 1567  sudo mount -a
+ 1568  l /mnt/orrl/
+ 1569  fbclone ovrsource --sparse SparseProfiles/OculusResearchAR.sparse
+ 1570  group
+ 1571  apt-install group
+ 1572  sudo groupadd snvuser
+ 1573  sudo groupadd svnuser
+ 1574  cd
+ 1575  sudo apt install fb-mercurial-omnibus fb-jellyfish
+ 1576  sudo touch /etc/fbitwhoami
+ 1577  kinit
+ 1578  sudo apt install fb-mercurial-omnibus fb-jellyfish
+ 1579  sudo touch /etc/fbitwhoami
+ 1580  kinit
+ 1581  cat /etc/ssl/certs/ca-certificates.crt 
+ 1582  ifconfig
+ 1583  ifconfig | grep 4
+ 1584  d
+ 1585  cd
+ 1586  d
+ 1587  pwd
+ 1588  d l
+ 1589  d .
+ 1590  d /RMB_SAFE/
+ 1591  d
+ 1592  cd /RMB_SAFE/
+ 1593  dir
+ 1594  d
+ 1595  d b
+ 1596  d
+ 1597  d b
+ 1598  cat b
+ 1599  c c
+ 1600  c e
+ 1601  c b
+ 1602  c d
+ 1603  c f
+ 1604  gt
+ 1605  d
+ 1606  cp b /SAFE/dev/keep/
+ 1607  cp g* /SAFE/dev/keep/
+ 1608  d
+ 1609  d .
+ 1610  cd
+ 1611  d
+ 1612  d w
+ 1613  cp kc2.8.* /SAFE/dev/keep/
+ 1614  d
+ 1615  cp reset.c /SAFE/dev/keep/
+ 1616  c z
+ 1617  d
+ 1618  cat aw.here 
+ 1619  d
+ 1620  c x
+ 1621  l *.sh
+ 1622  cat reset_all.sh 
+ 1623  cat reset.pci.sh 
+ 1624  cp reset.pci.sh /SAFE/dev/keep/
+ 1625  d
+ 1626  C
+ 1627  V
+ 1628  D
+ 1629  C
+ 1630  V
+ 1631  cp .my_top_cmds /SAFE/dev/keep/.my_top_cmds_VV
+ 1632  cp .my_top_cmds_25fps /SAFE/dev/keep/.my_top_cmds_VV25 
+ 1633  cp .my_top_cmds_bu /SAFE/dev/keep/.my_top_cmds_VVbu 
+ 1634  D
+ 1635  F
+ 1636  C
+ 1637  d
+ 1638  l
+ 1639  d
+ 1640  vi ~/.tmux.conf 
+ 1641  tmux
+ 1642  vi D
+ 1643  cat D
+ 1644  tty
+ 1645  l
+ 1646  l /mnt/orrl/
+ 1647  sudo groupadd svnuser
+ 1648  groups
+ 1649  groups | grep svn
+ 1650  sudo touch /etc/fbitwhoami
+ 1651  reboot
+ 1652  d
+ 1653  d e
+ 1654  m
+ 1655  vi m
+ 1656  m
+ 1657  d
+ 1658  cd /SAFE
+ 1659  d
+ 1660  git clone https://ghe.oculus.com/robertbirch/dev.git
+ 1661  sudo update-ca-certificates 
+ 1662  git clone https://ghe.oculus.com/robertbirch/dev.git
+ 1663  history | grep rec
+ 1664  git clone --recursive git@ghe.oculus.com:robertbirch/dev
+ 1665  git clone --recursive git@ghe.oculus.com:robertbirch/dev.git
+ 1666  git clone --recursive git@ghe.oculus.com:robertbirch/dev
+ 1667  cat /home/robertbirch/.ssh/config 
+ 1668  vi ~/.ssh/id_rsa
+ 1669  chmod 600 ~/.ssh/config 
+ 1670  git clone --recursive git@ghe.oculus.com:robertbirch/dev
+ 1671  d
+ 1672  d b
+ 1673  d
+ 1674  d .
+ 1675  d
+ 1676  d b
+ 1677  mkdir keep
+ 1678  d
+ 1679  where d
+ 1680  which d
+ 1681  cd
+ 1682  d
+ 1683  d l
+ 1684  d .
+ 1685  d l
+ 1686  d .
+ 1687  vi ~/.bashrc 
+ 1688  cd
+ 1689  d
+ 1690  bash
+ 1691  d
+ 1692  l bin
+ 1693  dir
+ 1694  d
+ 1695  l bin/d
+ 1696  cd
+ 1697  d
+ 1698  cd /SAFE/
+ 1699  d
+ 1700  d b
+ 1701  d a
+ 1702  ls /RMB_SAFE/work/bin/d
+ 1703  cp /RMB_SAFE/work/bin/d .
+ 1704  cp ~/.bashrc .
+ 1705  cp ~/.my_top_* .
+ 1706  l
+ 1707  d
+ 1708  D
+ 1709  V
+ 1710  d
+ 1711  l
+ 1712  d
+ 1713  cd /RMB_SAFE/
+ 1714  d
+ 1715  cd -
+ 1716  d
+ 1717  pwd >> ~/.my_top_dirs 
+ 1718  d
+ 1719  S
+ 1720  echo pwd >> ~/.my_top_dirs 
+ 1721  echo 'pwd >> ~/.my_top_dirs'
+ 1722  echo 'pwd >> ~/.my_top_dirs' >> /RMB_SAFE/work/bin/d 
+ 1723  vi /RMB_SAFE/work/bin/d 
+ 1724  bash
+ 1725  d
+ 1726  S
+ 1727  d
+ 1728  S
+ 1729  d
+ 1730  vi ~/.my_top_dirs 
+ 1731  d
+ 1732  H
+ 1733  d
+ 1734  d l
+ 1735  d
+ 1736  git status
+ 1737  git add .my_top_*
+ 1738  git add .bashrc 
+ 1739  d
+ 1740  git status
+ 1741  d
+ 1742  gs
+ 1743  ./gs
+ 1744  d
+ 1745  chmod 777 *
+ 1746  gs
+ 1747  :q
+ 1748  git add b d gc gl gp gs gt
+ 1749  d
+ 1750  gs
+ 1751  d
+ 1752  D
+ 1753  V
+ 1754  V b
+ 1755  d
+ 1756  git add kc2.8.*
+ 1757  d
+ 1758  git status
+ 1759  cp ~/.vimrc .
+ 1760  d
+ 1761  git status
+ 1762  git add .vimrc
+ 1763  d
+ 1764  gs
+ 1765  C
+ 1766  d
+ 1767  gs
+ 1768  git add reset.c 
+ 1769  d
+ 1770  gs
+ 1771  git add reset.pci.sh 
+ 1772  d
+ 1773  gs
+ 1774  git add .my_top_cmds*
+ 1775  gs
+ 1776  d
+ 1777  l
+ 1778  gs
+ 1779  cp ~/.tmux.conf .
+ 1780  tmux
+ 1781  tmux
+ 1782  d
+ 1783  d a
+ 1784  gs
+ 1785  git status
+ 1786  git add keep/.tmux.conf 
+ 1787  git add bin/d 
+ 1788  dir
+ 1789  d
+ 1790  git commit -m "new"
+ 1791  cp ~/.bashrc keep/
+ 1792  git status
+ 1793  git diff keep/.bashrc
+ 1794  git add keep/.bashrc
+ 1795  git commit -m "n"
+ 1796  git push
+ 1797  d
+ 1798  d .
+ 1799  d
+ 1800  d b
+ 1801  d a
+ 1802  git status
+ 1803  git branch
+ 1804  git branch 92e83d4
+ 1805  git branch -a
+ 1806  git checkout 92e83d4
+ 1807  git branch -a
+ 1808  C
+ 1809  git rev-parse HEAD
+ 1810  d
+ 1811  git checkout abd
+ 1812  git checkout 92e83d3
+ 1813  git checkout 92e83d4
+ 1814  d
+ 1815  d .
+ 1816  d b
+ 1817  git checkout a2238b5
+ 1818  d .
+ 1819  d c
+ 1820  git checkout eb941fd
+ 1821  d
+ 1822  git pull
+ 1823  d .
+ 1824  d a
+ 1825  git pull
+ 1826  cd ..
+ 1827  d
+ 1828  cd ..
+ 1829  d
+ 1830  mkdir tmp
+ 1831  cd tmp/
+ 1832  d
+ 1833  git clone --recursive git@ghe.oculus.com:OculusResearch/CV1Firmware
+ 1834  cd ..
+ 1835  d
+ 1836  mv MinIMU/ tmp/
+ 1837  ri
+ 1838  d
+ 1839  mkdir minIMU
+ 1840  d
+ 1841  d b
+ 1842  git clone --recursive git@ghe.oculus.com:OculusResearch/CV1Firmware
+ 1843  git clone --recursive git@ghe.oculus.com:OculusResearch/CV1FWToolchain
+ 1844  git clone --recursive git@ghe.oculus.com:OculusResearch/mirror_CV1FWToolchain
+ 1845  git clone --recursive git@ghe.oculus.com:OculusResearch/mirror_MCRuntime
+ 1846  git clone --recursive git@ghe.oculus.com:OculusResearch/mirror_MCBootloader
+ 1847  d
+ 1848  mv mirror_CV1FWToolchain/ CV1FWToolchain/
+ 1849  mv mirror_MCBootloader/ MCBootloader/
+ 1850  mv mirror_MCRuntime/ MCRuntime/
+ 1851  d
+ 1852  d a
+ 1853  git status
+ 1854  C
+ 1855  echo 'git status'
+ 1856  echo 'git status' >> ~/.my_top_cmds 
+ 1857  C
+ 1858  C d
+ 1859  git checkout 92e83d4
+ 1860  git branch -a
+ 1861  cd ..
+ 1862  d
+ 1863  d b
+ 1864  C
+ 1865  C d
+ 1866  git branch -a
+ 1867  echo 'git branch -a'
+ 1868  echo 'git branch -a' >> ~/.my_top_cmds 
+ 1869  C
+ 1870  C e
+ 1871  git checkout a2238b5
+ 1872  git branch -0a
+ 1873  git branch -a
+ 1874  d .
+ 1875  d c
+ 1876  C
+ 1877  C e
+ 1878  git checkout eb941fd
+ 1879  d .
+ 1880  d d
+ 1881  git branch -a
+ 1882  git branch -a
+ 1883  d .
+ 1884  d c
+ 1885  git checkout 4345be3
+ 1886  git branch -a
+ 1887  d
+ 1888  git rev-parse HEAD
+ 1889  cd .
+ 1890  d .
+ 1891  d
+ 1892  vi check_all.sh
+ 1893  for i in 'CV1Firmware CV1FWToolchain MCBootloader MCRuntime'; do echo $i; done
+ 1894  echo "for i in 'CV1Firmware CV1FWToolchain MCBootloader MCRuntime'; do echo $i; done"
+ 1895  echo 'for i in "CV1Firmware CV1FWToolchain MCBootloader MCRuntime"; do echo $i; done'
+ 1896  echo 'for i in "CV1Firmware CV1FWToolchain MCBootloader MCRuntime"; do echo $i; done' >>  check_checkouts.sh
+ 1897  d
+ 1898  v a
+ 1899  e a
+ 1900  chmod 777 check_checkouts.sh 
+ 1901  e a
+ 1902  v a
+ 1903  git rev-parse HEAD
+ 1904  echo 'git rev-parse HEAD'
+ 1905  echo 'git rev-parse HEAD' >> check_checkouts.sh 
+ 1906  v a
+ 1907  e a
+ 1908  v a
+ 1909  e a
+ 1910  v a
+ 1911  e a
+ 1912  v a
+ 1913  e a
+ 1914  v a
+ 1915  e a
+ 1916  d
+ 1917  cp check_checkouts.sh /SAFE/dev/keep/
+ 1918  d
+ 1919  ./check_checkouts.sh 
+ 1920  set
+ 1921  echo $path
+ 1922  echo $PATH
+ 1923  d
+ 1924  check_checkouts.sh 
+ 1925  d
+ 1926  d a
+ 1927  git branch -a
+ 1928  d
+ 1929  make clean
+ 1930  make headset.stm.cv1
+ 1931  d
+ 1932  d .
+ 1933  d
+ 1934  ./check_checkouts.sh 
+ 1935  vi check_checkouts.sh 
+ 1936  ./check_checkouts.sh 
+ 1937  vi check_checkouts.sh 
+ 1938  ./check_checkouts.sh 
+ 1939  history 
+ 1940  cp check_checkouts.sh /SAFE/dev/keep/
+ 1941  cd /SAFE/dev/keep/
+ 1942  git status
+ 1943  git diff check_checkouts.sh
+ 1944  git add check_checkouts.sh 
+ 1945  git commit -m "n"
+ 1946  git push
+ 1947  git pull
+ 1948  git commit -m "n"
+ 1949  git status
+ 1950  git push
+ 1951  d
+ 1952  tmus
+ 1953  tmux
+ 1954  d
+ 1955  d i
+ 1956  v d
+ 1957  d
+ 1958  cd
+ 1959  cd /SAFE/
+ 1960  d
+ 1961  d a
+ 1962  make
+ 1963  cat Makefile 
+ 1964  make headset.stm.cv1
+ 1965  make clean
+ 1966  make headset.stm.cv1
+ 1967  d
+ 1968  C
+ 1969  d
+ 1970  git branch -a
+ 1971  cd ..
+ 1972  d
+ 1973  rm -r CV1Firmware/
+ 1974  d
+ 1975  d a
+ 1976  d
+ 1977  gc
+ 1978  git commit "Scripts and dev.c"
+ 1979  git commit -m "Scripts and dev.c"
+ 1980  git push
+ 1981  d
+ 1982  d .
+ 1983  vi ~/.bashrc 
+ 1984  d
+ 1985  mkdir d
+ 1986  d
+ 1987  rmdir d
+ 1988  d
+ 1989  mkdir dev/bin
+ 1990  cp /RMB_SAFE/work/bin/d dev/bin/
+ 1991  d
+ 1992  vi ~/.bashrc
+ 1993  bash
+ 1994  tmux
+ 1995  d
+ 1996  d d
+ 1997  v d
+ 1998* 
+ 1999  v d
+ 2000  pushd .
+ 2001  cd
+ 2002  d
+ 2003  d B
+ 2004  hg st		status
+ 2005  hg pull		grab
+ 2006  kinit		need permission fabricator server
+ 2007  hg pull
+ 2008  C
+ 2009  hg st
+ 2010  hg sl		smart log
+ 2011  hg pull --rebase -d master	pull all master
+ 2012  hg sl
+ 2013  hg st
+ 2014  hg update e462d696ba35 --clean	checkout sha  --clean throw away all uncommited changes
+ 2015  history > keep
+
+
+
+1985  cd ovrsource
+ 1986  hg update master --clean
+ 1987  hg pull
+ 1988  kinit
+ 1989  hg pull --rebase -d master
+ 1990  cd SparseProfiles/
+ 1991  gedit OculusResearchAR.sparse 
+ 1992  hg sparse --refresh
+ 1993  hg commit
+ 1994  hg sparse --refresh
+ 1995  history 
+
+
+%include SparseProfiles/OculusResearchBase.sparse
+[include]
+Research/ar
+Research/scripts
+Software/CoreTech/scripts
+Software/CoreTech/src/Libs/Os
+Software/CoreTech/src/Libs/Logging
+Software/CoreTech/src/Libs/VRS
+Software/CoreTech/src/Libs/Utils
+Software/CoreTech/src/Management/Recording
+Software/CoreTech/src/Management/Hardware
+Software/CoreTech/src/Management/Calibration
+Software/CoreTech/viper/viper/api
+Software/CoreTech/depth-camera-lib/lib/Recorder
+Software/CoreTech/viper/viper/slam_io
+Software/CoreTech/vision-third-party-libs/cereal
+[exclude]
+/

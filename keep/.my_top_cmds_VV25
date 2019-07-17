@@ -1,0 +1,47 @@
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontL25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json               #  S        front               S  -
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json               #  L              front         L  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideL25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                #  A   left                     A  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                #  M                    right   M  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlam25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                  # SLAM left front front right SLAM -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETL25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                      #  E   left                     E  -
+./VideoViewer --timing -i json:[Cams=CamsETR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                      #  T                    right   T  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlamAndET25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json             # SLAM AND ET          SLAM AND ET -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_L25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                    #  R   left                     R  -
+./VideoViewer --timing -i json:[Cams=CamsCenter25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                   #  G           center           G  -
+./VideoViewer --timing -i json:[Cams=CamsRGB_R25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                    #  B                    right   B  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETLR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                     # ET   left             right   ET -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_LR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                   # RGB  left             right  RGB -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlamL25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                 # SLAM left front             SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlamR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                 # SLAM            front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlam25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                  # SLAM left front front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsRGB_LCR25fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                  # SLAM left front front right SLAM -
+clear
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontL100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json               #  S        front               S  -
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json               #  L              front         L  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideL100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                #  A   left                     A  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                #  M                    right   M  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETL100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                      #  E   left                     E  -
+./VideoViewer --timing -i json:[Cams=CamsETR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                      #  T                    right   T  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_L100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                    #  R   left                     R  -
+./VideoViewer --timing -i json:[Cams=CamsCenter100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                   #  G           center           G  -
+./VideoViewer --timing -i json:[Cams=CamsRGB_R100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                    #  B                    right   B  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETLR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                     # ET   left             right   ET -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_RL100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                   # RGB  left             right  RGB -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlamL100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                 # SLAM left front             SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlamR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                 # SLAM            front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlam100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                  # SLAM left front front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsRGB_LCR100fps]///research-surreal/build/tools/VideoViewer/kc2.8.3.json                  # SLAM left front front right SLAM -
+
+clear

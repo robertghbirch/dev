@@ -1,0 +1,672 @@
+function Help {
+  echo "##################################################################"
+  echo "#        							  "
+  echo "#  |     |							  "
+  echo "#  |\   /|   \   /						  "
+  echo "#  | \ / |    \ /						  "
+  echo "#  |  Y  |     |						  "
+  echo "#  |     |     |						  "
+  echo "#  |     |     |						  "
+  echo "#  |     |     |						  "
+  echo "#    ____ _     ___   _   _ _   _ _ _ _   _  		          "
+  echo "#   / ___| |   |_ _| | | | | |_(_) (_) |_(_) ___  ___       "
+  echo "#  | |   | |    | |  | | | | __| | | | __| |/ _ \/ __|      "
+  echo "#  | |___| |___ | |  | |_| | |_| | | | |_| |  __/\__ \      "
+  echo "#   \____|_____|___|  \___/ \__|_|_|_|\__|_|\___||___/      "
+  echo "#"
+  echo "#"
+  echo "#   [.my_top_cmds] - optional resource file in ~/. directory listing"
+  echo "#                    all of your favorite commands"
+  echo "#   [.my_top_dirs] - optional resource file in ~/. directory listing"
+  echo "#                    all of your favorite directories"
+  echo "#   [.my_filter]   - optional resource file containing types to"
+  echo "# 		     display.  Example: *.java *.txt m Makefile"
+  echo "#                    NOTE: one type per line"
+  echo "#"
+  echo "#   d  		- lists directories"
+  echo "#   d index 	- change to index directory"
+  echo "#"
+  echo "#   D  		- lists .directories"
+  echo "#   D index 	- change to index directory ]"
+  echo "#"
+  echo "#   e index 	- executes file"
+  echo "#   E 		- launches explorer"
+  echo "#"
+  echo "#   f/v  	- lists files 	  "
+  echo "#   f/v index	- vim file"
+  echo "#"
+  echo "#   F/V  	- lists.files 	  "
+  echo "#   F/V index 	- vim .files 	  "
+  echo "#"
+  echo "#   c index 	- cat file"
+  echo "#"
+  echo "#   C  		- show .my_top_cmds"
+  echo "#   C index 	- executes cmd"
+  echo "#"
+  echo "#   h           - history"
+  echo "#   h index 	- head file"
+  echo "#"
+  echo "#   t index 	- trash file to /mnt/c/VOLATILE/trash"
+  echo "#"
+  echo "#   H           - help"
+  echo "#   N           - print notes"
+  echo "#"
+  echo "#   S           - Save PWD To .my_top_dirs"
+  echo "#"
+  echo "#   mcd dir	- makes directory and change into it"
+  echo "#"
+  echo "#   mcdd [dir]	- makes directory with the date and optional suffix and change into it"
+  echo "#"
+  echo "##################################################################"
+}
+
+
+function H {
+	Help
+}
+
+function Notes {
+   if [ -e ~/.my_top_notes ] 
+   then
+	cat ~/.my_top_notes
+   fi
+   
+   D=`echo ~`
+   D2=`pwd`
+   if [ $D = $D2 ]
+   then
+     return
+   fi
+   if [ -e ./.my_top_notes ] 
+   then
+	cat ./.my_top_notes
+   fi
+}
+
+function N {
+	Notes
+}
+
+  ###########
+ # GLOBALS #
+###########
+# Internal Field Separator
+IFS='
+'
+tas=""
+
+
+  #####################
+ # INTERNAL FUNCTIONS #
+#######################
+function adjust_index() {
+
+	tas=$1
+
+	FL=${tas:0:1}
+	SL=${tas:1:1}
+
+	if [ $FL = "z" ]
+	then
+		FL="A"
+		tas=$FL$SL	
+	else 
+		if [ $FL = "Z" ]
+		then
+			FL="a"
+			if [ $SL ]
+			then
+				SL=`echo $SL | tr {0-8,1-9}`
+			else
+				SL="1"
+			fi
+			tas=$FL$SL	
+		else
+			tas=`echo $1 | tr {a-y,b-z} | tr {A-Y,B-Z}`
+		fi	
+	fi
+}
+
+  #####################
+ # Directory Display #
+#####################
+function ddisplay_rmb {
+   as="a"
+
+
+   for i in $FILES
+   do
+      if [ -d "$i" ] ; then
+
+        echo -n "[" $as "] " 
+        echo $i 
+
+	 adjust_index $as
+	 as=$tas
+      fi
+   done 
+
+   # my_top_dirs
+   if [ -e ~/.my_top_dirs ] 
+   then 
+     echo "      ******************** TOP DIRECTORIES *************************************"
+     for i in `cat ~/.my_top_dirs`
+     do
+       echo -n "[" $as "] " 
+       echo $i 
+	 adjust_index $as
+	 as=$tas
+     done 
+   fi
+
+   x1=`pwd`
+   x2=`echo ~`
+   if [ $x1 = $x2 ]
+   then
+       return
+   fi
+   # my_top_dirs
+   if [ -e ./.my_top_dirs ] 
+   then
+     for i in `cat ./.my_top_dirs`
+     do
+       echo -n "[" $as "] " 
+       echo $i 
+	 adjust_index $as
+	 as=$tas
+     done 
+   fi
+}
+
+  ################
+ # CD Directory #
+################
+function cd_rmb {
+   as="a"
+
+   if [ $1 = "." ]
+   then
+     cd ..
+     ddisplay_rmb
+     f
+     return
+   fi
+
+   arg1=$1
+   if [ ${#arg1} != "1" ]
+   then
+     while [ "." = ${arg1:0:1} ] ; do
+       arg1=${arg1:1:${#arg1}}
+       cd ..
+       if [ ${#arg1} = "1" ]
+       then
+         cd ..
+         ddisplay_rmb
+         f
+         return
+       fi
+     done
+   fi
+	
+   for i in $FILES
+   do
+   
+      if [ -d "$i" ] ; then
+         if [ $as = "$1" ]
+         then
+       	    cd "$i" 
+       	    ddisplay_rmb
+    	    f
+    	    return
+         fi
+       
+	 adjust_index $as
+	 as=$tas
+      fi
+   
+   done 
+
+   # saved rmb_top dirs
+   if [ -e ~/.my_top_dirs ] 
+   then
+     for i in `cat ~/.my_top_dirs`
+     do
+       if [ $as = "$1" ]
+       then
+         cd "$i" 
+         ddisplay_rmb
+         f
+         return
+       fi
+	 adjust_index $as
+	 as=$tas
+     done
+   fi
+
+   # saved rmb_top dirs
+   if [ -e ./.my_top_dirs ] 
+   then
+     for i in `cat ./.my_top_dirs`
+     do
+       if [ $as = "$1" ]
+       then
+         cd "$i" 
+         ddisplay_rmb
+         f
+         return
+       fi
+	 adjust_index $as
+	 as=$tas
+     done
+   fi
+
+}
+
+
+
+  #################
+ # Files Display #
+#################
+function vdisplay_rmb {
+   as="a"
+   cols=1
+   rows=0
+   space=0
+
+   for i in $FILES
+   do
+
+      #echo "COUNT = [" $# "]"
+      let "cols=cols+1"
+     
+      if [ ! -d "$i" ] ; then
+
+         echo -n "[" $as "] " 
+         echo -n $i 
+
+	 adjust_index $as
+	 as=$tas
+
+      else
+         let "cols=cols-1"
+         continue
+      fi
+
+      if [ $rows -eq 0 ]
+      then
+        rows=1
+      else
+        rows=0
+      fi
+
+      space=${#i}
+      ((space=55-space))
+      ((space=space-${#as}))
+      if [ $cols -eq 3 ]
+      then
+        echo ""
+        cols=1
+      else
+        until [ $space -eq 0 ]
+        do
+          echo -n " "
+          ((space--))
+        done
+      fi
+   done 
+
+   echo
+   if [ $rows -eq 1 ]
+   then
+     echo
+   fi
+}
+
+
+  #################
+ # Files Do      #
+#################
+function vi_rmb {
+   as="a"
+
+   for i in $FILES
+   do
+     
+      if [ ! -d "$i" ] ; then
+         if [ $as = $2 ]
+         then
+             if [ 'f' = $1 ]
+	     then
+       	       vim "$i"
+       	       d
+    	       return
+	     fi
+             if [ 'c' = $1 ]
+	     then
+       	       cat "$i"
+    	       return
+	     fi
+             if [ 'C' = $1 ]
+	     then
+       	       echo $i
+    	       return
+	     fi
+             if [ 'e' = $1 ]
+	     then
+       	       $i
+    	       return
+	     fi
+             if [ 'h' = $1 ]
+	     then
+       	       head "$i"
+    	       return
+	     fi
+             if [ 't' = $1 ]
+	     then
+               D=`date +%Y_%m_%d_%H_%M_%S`
+               D='/mnt/c/VOLATILE/trash/'$D'_'$i
+       	       #echo trash "$i" "$D"
+               mv $i $D
+    	       return
+	     fi
+         fi
+       
+	 adjust_index $as
+	 as=$tas
+      fi
+
+   done 
+}
+
+
+  #############
+ # Files cat #
+#############
+function c_rmb {
+   as="a"
+
+   for i in $FILES
+   do
+     
+      if [ ! -d "$i" ] ; then
+         if [ $as = $1 ]
+         then
+       	    cat "$i"
+    	    return
+         fi
+       
+	 adjust_index $as
+	 as=$tas
+      fi
+
+   done 
+}
+
+  #############
+ # Directory #
+#############
+d() {
+   tput clear
+   FILES="*"
+   
+   #echo "**********               *** DIRECTORIES ***"
+
+   echo "      ********************** DIRECTORIES ***************************************"
+  
+   if [ $# -lt 1 ]
+   then 
+      ddisplay_rmb
+      f
+   else
+      cd_rmb $1 d
+   fi 
+}
+D() {
+   tput clear
+   
+   echo "                         *** .DIRECTORIES ***"
+   FILES=".*"
+   
+   if [ $# -lt 1 ]
+   then 
+      ddisplay_rmb
+      echo
+   else
+      cd_rmb $1 D
+   fi 
+}
+
+  #########
+ # Files #
+#########
+V () {
+	F "$@"
+}
+v () {
+	f "$@"
+}
+f () {
+   
+   if [ -e .my_filter ] 
+   then
+     FILES=`cat .my_filter`
+     #echo FILES=[ ${FILES} ] 
+   else
+     FILES="*"
+   fi
+   
+   if [ $# -lt 1 ]
+   then 
+     echo "      ************************** FILES *****************************************"
+     #echo "                         *** FILES ***"
+     vdisplay_rmb
+   else
+     vi_rmb 'f' $1
+   fi 
+}
+F () {
+   tput clear
+   
+   FILES=".*"
+   
+   if [ $# -lt 1 ]
+   then 
+     echo "                         *** .FILES ***"
+     vdisplay_rmb
+   else
+     vi_rmb 'f' $1
+   fi 
+}
+
+
+  #############
+ # Files cat #
+#############
+c () {
+   
+   if [ -e .dvrc ] 
+   then
+     FILES=`cat .dvrc`
+   else
+     FILES="*"
+   fi
+   
+   if [ $# -ge 1 ]
+   then 
+     vi_rmb 'c' $1
+   fi 
+}
+
+  #####################
+ # favorite commands #
+#####################
+C () {
+   clear
+   if [ $# -lt 1 ]
+   then 
+     echo "                         *** COMMANDS ***"
+     as="a"
+
+     # my_top_cmds
+     if [ -e ./.my_top_cmds ] 
+     then
+       for i in `cat ./.my_top_cmds`
+       do
+         echo -n "[" $as "] " 
+         echo -n $i 
+         echo "	[" $as "] " 
+	 adjust_index $as
+	 as=$tas
+       done 
+     fi
+     if [ -e ~/.my_top_cmds ] 
+     then
+       for i in `cat ~/.my_top_cmds`
+       do
+         echo -n "[" $as "] " 
+         echo -n $i 
+         echo  "	[" $as "] " 
+	 adjust_index $as
+	 as=$tas
+       done 
+     fi
+   else
+     as="a"
+     # my_top_cmds
+     if [ -e ./.my_top_cmds ] 
+     then
+       for i in `cat ./.my_top_cmds`
+       do
+	
+         if [ $as = $1 ]
+         then
+		echo "[[${i%#*}]]"
+		eval ${i%#*}
+	 fi
+
+	 adjust_index $as
+	 as=$tas
+       done 
+     fi
+     if [ -e ~/.my_top_cmds ] 
+     then
+       for i in `cat ~/.my_top_cmds`
+       do
+	
+         if [ $as = $1 ]
+         then
+		echo "[${i%#*}]"
+		eval ${i%#*}
+	 fi
+
+	 adjust_index $as
+	 as=$tas
+       done 
+     fi
+   fi 
+}
+
+  ############
+ # EXE File #
+############
+E () {
+
+  string=`pwd`
+
+searchstring="/mnt/c"
+
+temp=${string#*$searchstring} # this means everything after "and" will be inserted into temp
+
+dir="c:"${temp//\//\\}
+#echo $dir
+
+	explorer.exe  $dir
+}
+e () {
+   
+   if [ -e .dvrc ] 
+   then
+     FILES=`cat .dvrc`
+   else
+     FILES="*"
+   fi
+   
+   if [ $# -ge 1 ]
+   then 
+     vi_rmb 'e' $1
+   fi 
+}
+
+
+  ##############
+  ##############
+ # Files head #
+##############
+h () {
+   
+   if [ -e .dvrc ] 
+   then
+     FILES=`cat .dvrc`
+   else
+     FILES="*"
+   fi
+   
+   if [ $# -ge 1 ]
+   then 
+     vi_rmb 'h' $1
+   else
+     history
+   fi 
+}
+
+ # Files head #
+##############
+t () {
+   
+   if [ -e .dvrc ] 
+   then
+     FILES=`cat .dvrc`
+   else
+     FILES="*"
+   fi
+   
+   if [ $# -ge 1 ]
+   then 
+     vi_rmb 't' $1
+   fi 
+}
+
+
+  #######################
+ # Make and change dir #
+#######################
+mcd () {
+  mkdir $1
+  cd $1
+}
+
+
+  #################################
+ # Make and change dir with date #
+#################################
+mcdd () {
+IFS='
+'
+D=`date +%Y_%m_%d_%H_%M_%S`
+
+if [ $# -eq 1 ] 
+then
+  D=$D'_'$1
+fi
+
+  mkdir $D
+  cd $D
+}
+
+
+  ######################
+ # SAVE PWD           #
+######################
+S() {
+  pwd >> ~/.my_top_dirs
+}

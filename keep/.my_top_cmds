@@ -1,0 +1,3 @@
+./exp_Kc28Control -i 100.97.15.166 -p 5005
+./exp_Kc28Control -i 100.97.15.10 -p 5005
+sudo ecam-dfu -f ../../../../Firmware/Firmware_Binary/Alphirk_3.4.133.178.img

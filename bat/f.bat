@@ -1,0 +1,1 @@
+cd C:\tmp\flasher\CV1Firmware_python_f\CV1Firmware_python_flasher\CV1Firmware\Binaries\Utils\HMD_Main

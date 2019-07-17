@@ -1,0 +1,27 @@
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontL25fps]///research-surreal/build/tools/VideoViewer/av2.1.json               #  S        front               S  -
+./VideoViewer --timing -i json:[Cams=CamsSlamFrontR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json               #  L              front         L  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideL25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                #  A   left                     A  -
+./VideoViewer --timing -i json:[Cams=CamsSlamSideR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                #  M                    right   M  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlam25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                  # SLAM left front front right SLAM -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETL25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                      #  E   left                     E  -
+./VideoViewer --timing -i json:[Cams=CamsETR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                      #  T                    right   T  -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlamAndET25fps]///research-surreal/build/tools/VideoViewer/av2.1.json             # SLAM AND ET          SLAM AND ET -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_L25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                    #  R   left                     R  -
+./VideoViewer --timing -i json:[Cams=CamsCenter25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                   #  G           center           G  -
+./VideoViewer --timing -i json:[Cams=CamsRGB_R25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                    #  B                    right   B  -
+./VideoViewer --timing -i json:[Cams=CamsTestBank1_50fps]///research-surreal/build/tools/VideoViewer/av2.1.json               #  TEST BANK 1 TEST BANK 1         -
+./VideoViewer --timing -i json:[Cams=CamsTestBank2_200fps]///research-surreal/build/tools/VideoViewer/av2.1.json              #  TEST BANK 2 TEST BANK 2         -
+clear
+./VideoViewer --timing -i json:[Cams=CamsETLR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                     # ET   left             right   ET -
+clear
+./VideoViewer --timing -i json:[Cams=CamsRGB_LR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                   # RGB  left             right  RGB -
+clear
+./VideoViewer --timing -i json:[Cams=CamsAllSlamL25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                 # SLAM left front             SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlamR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                 # SLAM            front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsAllSlam25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                  # SLAM left front front right SLAM -
+./VideoViewer --timing -i json:[Cams=CamsRGB_LCR25fps]///research-surreal/build/tools/VideoViewer/av2.1.json                  # SLAM left front front right SLAM -
+./VideoViewer --timing -i json:[Cams=CX_25fps]///research-surreal/build/tools/VideoViewer/av2.1.json               #  S        front               S  -

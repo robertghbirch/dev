@@ -1,0 +1,21 @@
+clear
+
+echo "compiling.... (long file)"
+
+make
+
+if [ $? -eq 0 ] 
+then
+  echo
+  echo "GENIUS!"
+
+  pipexec -- '[A' ./my_program '[B' ../device/my_program '{A:1>B:0}' '{B:1>A:0}'
+
+else
+
+  echo
+  echo "ERROR!"
+  echo ; echo ; echo ; echo ; echo
+
+fi
+echo

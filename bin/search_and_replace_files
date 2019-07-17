@@ -1,0 +1,9 @@
+D=`date +%Y_%m_%d_%H_%M_%S`
+
+for i in $*
+do 
+  echo $i
+  cat $i | sed 's/python3.6/python3/g' > /tmp/$D
+  rm $i
+  cp /tmp/$D $i
+done

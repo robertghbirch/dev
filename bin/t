@@ -1,0 +1,10 @@
+D=`echo ~`
+D2=`pwd`
+
+echo $D
+echo $D2
+
+if [ $D = $D2 ]
+then
+  echo Equal
+fi

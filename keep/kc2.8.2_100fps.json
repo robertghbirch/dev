@@ -1,0 +1,16 @@
+{
+  "video_uri": "${${Cams}}",
+  "video_uri_defaults": {
+    "Cams": "CamsAll",
+    "CamsAll": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+
+    "period25fps": "10000",
+    "ExposureTime25fps": "5000",
+    "CamsSlamSideL25fps": "thread:\/\/eyes:[size=636x481,sn=556585728,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/",
+    "CamsSlamFrontL25fps": "thread:\/\/eyes:[size=636x481,sn=557175552,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/",
+    "CamsETL25fps": "thread:\/\/eyes:[size=1272x800,sn=574018304,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/",
+    "CamsETR25fps": "thread:\/\/eyes:[size=1272x800,sn=152191745,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/",
+    "CamsSlamSideR25fps": "thread:\/\/eyes:[size=636x481,sn=152584961,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/",
+    "CamsSlamFrontR25fps": "thread:\/\/eyes:[size=636x481,sn=135217921,ExternalTrigger=1,CenteredExposure=1,period=${period25fps},ExposureTime=${ExposureTime25fps}]\/\/\/"
+  }
+}

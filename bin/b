@@ -1,0 +1,4 @@
+while [ true ]
+do
+tail /tmp/23.log | grep Bos | grep "a\["
+done

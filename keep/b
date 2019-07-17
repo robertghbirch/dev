@@ -1,0 +1,37 @@
+##########################
+echo "Backing up data"
+##########################
+#
+
+IFS='
+'
+
+D=`date +%Y_%m_%d_%H_%M_%S`
+P='Martian'
+T='Martian V3/Martian/Martian.cydsn/*.c'
+
+if [ $# -eq 1 ] 
+then
+  D=$P'_'$D'_'$1
+else
+  D=$P'_'$D
+fi
+
+mkdir bu/$D
+chmod 777 bu/$D
+
+mkdir bu/$D/Martian/
+cp $T bu/$D/Martian/ 
+
+cp g* b bu/$D 
+
+mkdir bu/$D/python/
+cp python/* bu/$D/python/
+
+mkdir bu/$D/python/submit
+cp python/submit/* bu/$D/python/submit
+
+ls -la bu/$D
+
+tar -vcf bu/$D.tar bu/$D/*
+cp bu/$D.tar ~/bu

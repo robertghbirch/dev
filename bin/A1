@@ -1,0 +1,5 @@
+while [ true ]
+do
+ sudo cat /dev/ttyACM1
+ echo hehehe
+done

@@ -1,0 +1,12 @@
+python.exe trigger.py 100.97.15.135 10005 1 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 2 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 3 1 0 4 8 0 
+python.exe trigger.py 100.97.15.135 10005 4 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 5 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 6 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 7 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 8 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 9 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 10 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 11 1 0 4 8 0
+python.exe trigger.py 100.97.15.135 10005 12 1 0 4 8 0

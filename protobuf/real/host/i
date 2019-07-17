@@ -1,0 +1,6 @@
+if [ $# -eq 1 ] 
+then
+	indent $1 -ts4 -nut -kr -l1024
+else
+	echo "Usage: i file"
+fi

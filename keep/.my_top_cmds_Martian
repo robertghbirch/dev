@@ -1,0 +1,4 @@
+git push --set-upstream origin DesktopSwitch		#				 
+git push origin --delete GreenMartianActingLikeBlueMarian	# Deletes a branch		  
+git add -u						# Adds all modified but not ignored  
+git add -a						# same as -u with deleted	     

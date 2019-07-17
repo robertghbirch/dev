@@ -1,0 +1,25 @@
+{
+  "video_uri": "${${Cams}}",
+  "video_uri_defaults": {
+    "Cams": "CamsAll",
+    "CamsAll": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+    "CamsETSlowL": "thread:\/\/eyes:[size=1272x800,sn=538366720,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsETSlowR": "thread:\/\/eyes:[size=1272x800,sn=925648385,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsETSlow": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsETSlowL}}{${CamsETSlowR}}",
+    "CamsSlamFrontR": "thread:\/\/eyes:[size=636x481,sn=253313793,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsSlamSideR": "thread:\/\/eyes:[size=636x481,sn=271794945,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsSlamFrontL": "thread:\/\/eyes:[size=636x481,sn=556126976,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsSlamSideL": "thread:\/\/eyes:[size=636x481,sn=555340544,ExternalTrigger=1,CenteredExposure=1,period=${period},ExposureTime=${ExposureTime}]\/\/\/",
+    "CamsR": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsETSlowR}}{${CamsSlamFrontR}}{${CamsSlamSideR}}",
+    "CamsL": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsETSlowL}}{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+    "Cams2L": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+    "Cams2R": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}",
+    "Cams4RL": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+    "CamsSlam": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}{${CamsSlamFrontL}}{${CamsSlamSideL}}",
+    "CamsSlamET": "thread:\/\/join:[sync_tolerance_us=4000]\/\/{${CamsSlamFrontR}}{${CamsSlamSideR}}{${CamsSlamFrontL}}{${CamsSlamSideL}}{${CamsETSlowL}}{${CamsETSlowR}}",
+    "ae": "auto:[minexp=0.02,maxexp=15.0,mingain=1,maxgain=10,maxstep=3,skip=1]\/\/",
+    "etperiod": "5250",
+    "period": "40000",
+    "ExposureTime": "5000"
+  }
+}

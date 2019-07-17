@@ -1,0 +1,524 @@
+// Frame format:
+//
+//    ┌────────────────┬────────────────────────────────────────┬─────────────┐
+//    │length (4 bytes)│   protobuf encoded payload (n bytes)   │CRC (4 bytes)│
+//    └────────────────┴────────────────────────────────────────┴─────────────┘
+//
+//    length = n + 4 encoded as uint32 little endian
+//    CRC calculated on protobuf payload only with polynomial x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x + 1
+//
+//    at this stage we are not planning a frame delimiter, in case of CRC mismatch the receiver will shift by one byte and reattempt decoding.
+//
+//    version 0.1
+//
+//    Notes:
+//    - many of the sensor below require a unique id within a sensor specific range. The policy to map a hw device to an id is left to the FW implementer
+//      the only requirement is for the id to always refer to the same physical device across FW revs. Ids are associate to physical devices so if multiple
+//      types of messages apply to the same device they will allhave the same device id.
+//    - any runtime error should be delivered to the host using the error field in the corresponding device.
+//    - we heavily leverage the fact that message fields are optional, this means that only some of the filed might be set in a message. 
+//
+
+//TODO:
+// - massage messages as needed
+// - SPI flash read write
+// - DFU mode
+// - calibration parameters load/store
+// - id to function table in flash
+
+
+syntax = "proto2";
+
+package frl.device.wireformat;
+
+// The messages from the device to the host PC are of two types:
+// - event messages that are streaming and that can be turned on and off
+// - replies to a specific control command from the host
+message ToHostMsg
+{
+    oneof payload {
+        EventMsg tel = 1;
+        ReplyMsg reply = 2;
+    }
+}
+
+// Messages streaming from the device, mostly sensor data, and other type of timely events. 
+// This type of message must always contain a time. If two or more data sources produce data symultaneously (e.g. Acc, Gyro, Temp in the IMU)
+// it is preferrable for them to be packed in the same EventMsg.
+message EventMsg
+{
+    optional TaiTime ts = 1;
+    repeated Acc accs = 2;
+    repeated Gyro gyros = 3;
+    repeated Mag mags = 4;
+    repeated Temp temps = 5;
+    repeated Baro baros = 6;
+    repeated Sync syncs = 7;
+    repeated FirstPixel fps = 8;
+    repeated Fan fans = 9;
+    repeated Button buttons = 10;
+    repeated Encoder encoders = 11;  
+    repeated VFMotor vfs = 12; 
+    repeated MainBoard mbs = 13;    
+    repeated Timer timer = 14;  
+}
+
+
+// ---- Event messages ----
+
+// Time, fixed precision format 
+message TaiTime
+{
+    optional uint64 s = 1;              // seconds (integer 40bits)
+    optional uint32 ns = 2;             // nanoseconds (fractional 32bits)
+}
+
+// Accelerometer
+message Acc  
+{                                       
+    required uint32 id = 1;             // unique accelerometer id (range 0x010000 - 0x01ffff)
+    optional uint32 raw_x = 2;          // unit as per sensor's datasheet (a single axis sensors uses only x)
+    optional uint32 raw_y = 3;          // unit as per sensor's datasheet
+    optional uint32 raw_z = 4;          // unit as per sensor's datasheet
+    optional uint32 error_code = 5;     // error condition, 0 = OK
+    optional string error_msg = 6;      // human readable error description
+}
+
+// Gyroscope
+message Gyro  
+{                                       
+    required uint32 id = 1;             // unique gyroscope id (range 0x020000 - 0x02ffff)
+    optional uint32 raw_x = 2;          // unit as per sensor's datasheet (a single axis sensors uses only x)
+    optional uint32 raw_y = 3;          // unit as per sensor's datasheet
+    optional uint32 raw_z = 4;          // unit as per sensor's datasheet
+    optional uint32 error_code = 5;     // error condition, 0 = OK
+    optional string error_msg = 6;      // human readable error description
+}
+
+// Magnetometer
+message Mag
+{
+    required uint32 id = 1;             // unique magnetometer id (range 0x030000 - 0x03ffff)
+    optional uint32 raw_x = 2;          // unit as per sensor's datasheet (a single axis sensors uses only x)
+    optional uint32 raw_y = 3;          // unit as per sensor's datasheet
+    optional uint32 raw_z = 4;          // unit as per sensor's datasheet
+    optional uint32 error_code = 5;     // error condition, 0 = OK
+    optional string error_msg = 6;      // human readable error description
+}
+
+// Barometer reading
+message Baro
+{
+    required uint32 id = 1;             // unique barometer id (range 0x040000 - 0x04ffff)
+    optional uint32 raw = 2;            // unit as per sensor's datasheet (a single axis sensors uses only x)
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// Temperature sensors, this includes:
+// - discrete sensors on i2c
+// - thermistors (e.g. in cameras)
+// - in die (e.g. IMU, barometer, MCU)
+message Temp
+{
+    required uint32 id = 1;             // unique temperature sensor id (range 0x050000 - 0x05ffff)
+    optional uint32 raw = 2;            // unit as per sensor's datasheet
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// Input captured by the SST
+message Sync
+{
+    enum DIR {
+        UNKNOWN = 0;
+        RAISING = 1;
+        FALLING = 2;
+    }
+    required uint32 id = 1;             // same as timer id
+    optional uint32 channel = 2;        // channel number
+    optional DIR dir = 3;               // RAISING of FALLING
+    optional uint32 count = 4;          // number of syncs for this channel since last reset
+    optional uint32 error_code = 5;     // error condition, 0 = OK
+    optional string error_msg = 6;      // human readable error description
+}
+
+// Value of first pixel in the display panel.
+// At the start of illumination the top left pixel of the display panel is sent back to the host
+message FirstPixel
+{
+    enum LR {
+        UNKNOWN = 0;
+        LEFT = 1;
+        RIGHT = 2;
+    }
+    required uint32 id = 1;             // unique display id (range 0x070000 - 0x07ffff)
+    optional LR which = 2;              // wether this is the left or right display
+    optional uint32 value = 3;          // pixel value returned by the display itself
+    optional uint32 count = 4;          // number of FirstPixel messages for this display since last reset
+    optional uint32 error_code = 5;     // error condition, 0 = OK
+    optional string error_msg = 6;      // human readable error description   
+}
+
+// Fan speed returned when fan turns on an then every 5s
+message Fan
+{
+    required uint32 id = 1;             // unique fan id (range 0x080000 - 0x08ffff)
+    optional uint32 raw_speed = 2;      // counts
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// Button state, returned when a button state changes
+message Button
+{
+    required uint32 id = 1;             // unique button id (range 0x090000 - 0x09ffff) 
+    optional bool value = 2;            // only used if not a pushbutton
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// Encoder value
+message Encoder
+{
+    required uint32 id = 1;             // unique encoder id (range 0x0a0000 - 0x0affff)
+    optional uint32 raw = 2;            // counts
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// BeeBop control loop state and event
+// When used as streaming message this should include only id, which and position_cnts
+
+message VFMotor
+{
+    enum LR {
+        UNKNOWN = 0;
+        LEFT = 1;
+        RIGHT = 2;
+    }
+    enum Event {
+	NONE = 0;
+        HOMING_COMPLETE = 1;
+    }
+    required uint32 id = 1;
+    optional LR which = 2;              // unique motor loop id (range 0x0b0000 - 0x0bffff) 
+    optional uint32 position_cnts = 3;  // motor current position. 
+    optional uint32 set_point_cnts = 4; // motor target position.
+    optional float rate_rpm = 5;        // motor current rate.
+    optional uint32 error_code = 6;     // error condition, 0 = OK (use this to report motor driver IC errors)
+    optional string error_msg = 7;      // human readable error description
+    optional Event event = 8;           // does not require posiiton and set point to be set.
+    optional bool flag = 9;             // value of 0ptical flag
+}
+
+// State of timer, returned when state changes.
+message Timer 
+{
+    enum Source {
+        UNKNOWN = 0;
+        INTERNAL = 1;
+        EXTRNAL = 2;
+    }
+    enum Status {
+        UNDEFINED = 0;
+        ADJUSTING = 1;
+        TRACKING = 2;
+    }
+    required uint32 id = 1;             // unique timer id (range 0x060000 - 0x06ffff)
+    optional Source src = 2;            // timer source External PPS or Internal oscillator.
+    optional Status status = 3;         // tracking loop state machine.
+    optional uint32 error_code = 4;     // error condition, 0 = OK
+    optional string error_msg = 5;      // human readable error description
+}
+
+// State of mainboard, returned when state changes.
+message MainBoard
+{
+    enum Status {
+        UNKNOWN = 0;
+        BOOTING = 1;
+        OK = 2;
+        TERMINATING = 3;
+    }
+    required uint32 id = 1;             // unique mainboard id (range 0x0c0000 - 0x0cffff) 
+    required Status status = 2;         // state of mainboard during boot or shutdown process.
+    optional uint32 error_code = 3;     // error condition, 0 = OK
+    optional string error_msg = 4;      // human readable error description
+}
+
+// ---- Replies to commands ----
+
+// Overall info message for the device
+message DeviceInfo {                        
+    optional DeviceSerial serial = 1;   // unique device serial number
+    optional FwVersion fw_ver = 2;       // fw version
+    optional ProtocolVersion p_ver = 3; // version of this messaging protocol
+    optional MfgDate mfg_date = 4;      // manufacturing date/time
+    optional HwVersion hw_ver = 5;      // hw version
+}
+
+// Version number for running FW
+message FwVersion {
+    optional uint32 major = 1;          // major version number
+    optional uint32 minor = 2;          // minor version number
+    optional bytes sha = 3;             // git or hg sha, 8 bytes
+}
+
+// Version number for current HW
+message HwVersion {
+    optional uint32 major = 1;          // hw rev major
+    optional uint32 minor = 2;          // hw rev minor
+    optional string model = 3;          // human readable model string
+}
+
+// Version number for the communication protocol, defined in this document.
+message ProtocolVersion {
+    optional uint32 major = 1;          // major version number
+    optional uint32 minor = 2;          // minor version number
+
+}
+
+// Manufacturing Date message
+message MfgDate {
+    optional uint32 hour = 1;           // hour (24h format)
+    optional uint32 min = 2;            // min
+    optional uint32 day = 3;            // day
+    optional uint32 month = 4;          // month
+    optional uint32 year = 5;           // year
+}
+
+// Unique serial number across devices, a block might be reserved for a specific device type.
+message DeviceSerial {
+    optional bytes hex = 2;             // at least 4 bytes. 
+}
+
+
+// The messages to the device can either be a configuration to be set or a command to execute.
+// The device must reply to every ToDeviceMsg message.
+// The sender provides a cmd_id (generally just a counter) that allows to pair a ReplyMsg with a ToDeviceMsg (the replies are asyncronous and might be out of order). 
+message ToDeviceMsg {
+    optional uint32 cmd_id = 1;
+    oneof Cmd {
+        DispDriverCfgs set_display_cfgs = 2;
+        GyroCfgs set_gyro_cfgs = 3;
+        AccCfgs set_acc_cfgs = 4;
+        BaroCfgs set_baro_cfgs = 5;
+        FanCfgs set_fan_cfgs = 6;
+        TimerCfg set_timer_cfg = 7;
+        TrigCfg set_trig_cfg = 8;
+        SyncCfg set_sync_cfg = 9;
+        DeviceSerial set_serial = 10;
+        VFMotorCfgs set_vfmotor_cfgs = 11;
+        VFMotorCmds set_vfmotor_cmd = 12;
+        bool get_display_cfgs = 21;     // shall return all DiplayCfgs
+        bool get_gyro_cfgs = 22;        // shall return all GyroCfgs
+        bool get_acc_cfgs = 23;         // shall return all AccCfgs
+        bool get_baro_cfgs = 24;        // shall return all BaroCfgs
+        bool get_fans_cfgs = 25;        // shall return all FanCfgs
+        bool get_timer_cfg = 26;
+        bool get_trig_cfg = 27;         // shall return all TrigChCfgs
+        bool get_sync_cfg = 28;         // shall return all SyncChCfgs
+        bool get_device_serial = 29;
+        bool get_board_info = 30;
+        bool get_protocol_version = 31;
+        bool get_fw_version = 32;
+        bool get_hw_version = 33;
+        bool get_mfg_date = 34;
+        bool get_vfmotor_states = 35;	// shall return all VFMotors 
+        bool get_vfmotor_cfgs = 36;	// shall return all VFMotorCfgs
+    }
+}
+
+
+// Reply messages generated by the device in reply to a host command.
+// If the Host command was a configuration command, the only ack will be set.
+message ReplyMsg {
+    required uint32 cmd_id = 1;         // cmd_id of the message this is a reply to
+    optional bool ack = 2;
+    repeated GyroCfg gyros = 3;
+    repeated AccCfg accs = 4;
+    repeated BaroCfg baro = 5;
+    repeated FanCfg fans = 6;
+    optional TimerCfg timer = 7;
+    repeated TrigCfg trigs = 8;
+    repeated SyncCfg syncs = 9;
+    optional DeviceInfo info = 10;
+    optional FwVersion fw_ver = 11;
+    optional HwVersion hw_ver = 12;
+    optional ProtocolVersion p_ver = 13;
+    optional MfgDate mfg_date = 14;
+    optional DeviceSerial serial = 15;
+    repeated VFMotor vfs = 16;
+    optional DispDriverCfgs display = 17;
+    repeated VFMotorCfgs vfmotor_cfg = 18;
+}
+
+
+// ---- Configuration messages ----
+
+// Configuration of the display driver IC.
+message DispDriverCfg {
+    enum DispDriverMode {
+        GLOBAL = 0;
+        ROLLING = 1;
+    }
+    required uint32 id = 1;             // display driver id.
+    required bool active = 2;           // display on/off
+    optional uint32 brightness = 3;     // brightness level, see datasheet for units
+    optional DispDriverMode mode = 4;   // global persistance or rolling
+    optional uint32 persistence = 5;    // display persistance time unit TBD
+    optional uint32 on_offset = 6;      // delay unit TBD
+}
+
+message DispDriverCfgs {
+    repeated DispDriverCfg array = 1;   // set of configs
+}
+
+// Configuration of the Gyroscope.
+message GyroCfg
+{
+    required uint32 id = 1;             // gyro id.
+    optional bool streaming = 2;        // streaming or not
+    optional uint32 odr_hz = 3;         // output data rate
+    optional uint32 range_dps = 4;      // full scale range in dps
+    optional uint32 mode = 5;           // sensor dependent 
+}
+
+message GyroCfgs {
+    repeated GyroCfg array = 1;         // set of configs
+}
+
+// Configuration of the Accelerometer.
+message AccCfg
+{
+    required uint32 id = 1;             // accelerometer id.
+    optional bool streaming = 2;        // streaming or not
+    optional uint32 odr_hz = 3;         // output data rate
+    optional uint32 range_g = 4;        // full scale range in g
+    optional uint32 mode = 5;           // sensor dependent 
+}
+
+message AccCfgs {
+    repeated AccCfg array = 1;          // set of configs
+}
+
+// Configuration of the pressure sensor.
+message BaroCfg {
+    required uint32 id = 1;             // barometer id.
+    optional bool streaming = 2;        // streaming or not
+    repeated uint32 raw = 3;            // sensor specif values needed to compute pressure
+}
+
+message BaroCfgs {
+    repeated BaroCfg array = 1;         // set of configs
+}
+
+// Configuration of the fan.
+message FanCfg {
+    required uint32 id = 1;             // fan id.
+    optional bool active = 2;           // on or off
+    optional bool streaming = 3;        // periodic streaming or fan speed
+    optional uint32 speed = 4;          // fan speed unit TBD
+}
+
+message FanCfgs {
+    repeated FanCfg array = 1;          // set of configs
+}
+
+// Configuration message to timer block (SST)
+message TimerCfg {
+    enum Source {
+        UNKNOWN = 0;
+        INTERNAL = 1;
+        EXTERNAL = 2;
+    }
+    required uint32 id = 1;             // timer id.
+    optional Source source = 2;         // driven by external PPS signal or on board oscillator 
+    optional TaiTime time = 3;          // if EXTERNAL this defines the time to be loaded at the next PPS pulse
+                                        // if INTERNAL this value should be loaded immediately  
+}
+
+// Trigger generation block config.
+// To start/stop capture on all active channels simply send a message with only the action field populated.
+message TrigCfg {
+    enum Action {
+        START_ALL_ACTIVE = 0;
+        STOP_ALL_ACTIVE = 1;
+    }
+    required uint32 id = 1;             // timer id. 
+    repeated TrigChCfg trig_ch_cfgs = 2;// list of trigger configs, at most one per channel
+    optional Action action = 3;         // start stop all active triggers.
+}
+
+// Trigger config for a single channel.
+message TrigChCfg {
+    optional uint32 channel = 1;        // channel number
+    optional uint32 period_us = 2;      // trigger signal period
+    optional uint32 offset_us = 3;      // time offset from master
+    optional uint32 master = 4;         // master channel wrt which the offset is expressed, set to itself if master
+    optional bool active = 5;           // enable / disable this specific channel
+}
+
+// Configuration set for all capture channels
+// To start/stop capture on all active channels simply send a message with only the action field populated
+message SyncCfg {
+    enum Action {
+        START_ALL_ACTIVE = 0;
+        STOP_ALL_ACTIVE = 1;
+    }
+    required uint32 id = 1;             // unique id for the time capture block, (hardcoded in uC FW)
+    repeated SyncChCfg sync_ch_cfgs = 2;// set of configs at most one per channel
+    optional Action action = 3;         // start/stop all of the capture channel marked as active
+}
+
+// Configuration of a capture channel
+message SyncChCfg {
+    enum DIR {
+        NOTACTIVE = 0;
+        RAISING = 1;                    // raising edge
+        FALLING = 2;                    // falling edge
+        BOTH = 3;                       // raising and falling edges
+    }
+    optional uint32 channel = 1;        // capture channel number
+    optional DIR dir = 2;               // capture edge, set to not active to disable this channel
+    optional uint32 prescaler = 3;      // decimation factor for this capture input
+    optional bool reset_cnt = 4;        // reset counter for this capture input
+}
+
+// Configuration of VFMotors
+message VFMotorCfg {
+    optional float pid_P = 1;           // pid loop proportional gain
+    optional float pid_I = 2;           // pid loop integral gain
+    optional float pid_D = 3;           // pid loop derivative gain
+    optional float safety_margin = 4;   // safety margin from limit
+    optional float step_limit = 5;      // max step
+    optional float accel_limit = 6;     // max accel
+    optional uint32 windup_limit = 7;   // itegrator limit
+    optional uint32 driver_current = 8; // driver current setting
+    optional uint32 microstepping = 9;  // microstepping size
+    optional uint32 min = 10;           // min set point
+    optional uint32 max = 11;           // max set point
+    optional uint32 offset = 12;        // set point offset
+    optional bool enable_pid = 13;      // enable pid loop
+    optional bool enable_motor = 14;    // enable motor
+    optional bool enable_stall_cur = 15;// enable stall current detection
+    optional bool enable_flag = 16;     // enable flags
+    optional bool streaming = 17;       // enble streaming of position messages
+}
+
+message VFMotorCfgs {
+    repeated VFMotorCfg array = 1;      // set of configs
+}
+
+// Runtime command for motor PID
+message VFMotorCmd {
+    optional uint32 id = 1;             // uinque id of teh motor this control is intended for.
+    optional uint32 set_point_cnts = 2; // value of the PID set point
+}
+
+message VFMotorCmds {
+    repeated VFMotorCmd array = 1;      // set of controls
+}
+
+

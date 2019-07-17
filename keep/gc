@@ -1,0 +1,6 @@
+if [ $# -eq 1 ] 
+then
+  git commit -m "$1"
+else
+  echo "Usage: gc info"
+fi

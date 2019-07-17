@@ -1,0 +1,12 @@
+clear
+gcc m2.c -o a
+if [ $? -eq 0 ] 
+then
+  echo
+  echo "GENIUS!"
+  a
+else
+  echo
+  echo "ERROR!"
+fi
+echo

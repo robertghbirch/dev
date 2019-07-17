@@ -1,0 +1,11 @@
+CC=gcc
+CFLAGS=-I/usr/local/include -L/usr/local/lib -std=c++11 -lstdc++
+
+%.o: %.cc $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS) 
+
+%.o: %.ccp $(DEPS)
+	$(CC) -c -o $@ $< -I/usr/local/include -L/usr/local/lib -std=c++11 -lstdc++
+
+my_program: main.o p_wire_protocol.pb.o
+	time $(CC) -o my_program main.o p_wire_protocol.pb.o -pthread -pthread -lprotoc -lprotobuf -lpthread

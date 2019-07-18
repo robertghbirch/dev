@@ -6,13 +6,12 @@ IF "%1"=="" (
   
   set "var=%cd%"
   SET c=c:\SAFE\dev\bat\%1% 
-  echo %c%
+  REM echo %c%
 
-  IF exist %c% (
-    echo Error: %c% already exists
-  ) ELSE (
-    SET f=c:\SAFE\dev\bat\%1
-	echo %f%
-    echo cd %var% > %f%
-  )
+	IF exist %c% (
+	  echo Error: %c% exists.
+	) ELSE (
+      echo cd %var% > %c%
+	)
+  
 )
